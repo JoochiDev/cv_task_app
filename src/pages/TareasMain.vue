@@ -371,7 +371,7 @@ function leave(el, done) {
                   text-btn-tarea="Cancelar"
                   class-btn-tarea="border border-gray-200 bg-white hover:bg-slate-100/40 text-black"
                 />
-                <BtnTareaForm @click="actualizarTarea" text-btn-tarea="Agregar" />
+                <BtnTareaForm @click="actualizarTarea" text-btn-tarea="Actualizar" />
               </template>
             </ModalActualizarTarea>
           </transition>
