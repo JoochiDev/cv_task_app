@@ -122,9 +122,18 @@ function leave(el, done) {
   <div
     class="flex flex-col justify-start p-4 h-screen w-full bg-gradient-to-br from-gray-300/60 via-pink-400/70 to-purple-400"
   >
-    <header class="flex justify-end space-x-4">
-      <BtnHeader @click="showModalRegistro = true" texto-btn-header="Registrar" />
-      <BtnHeader @click="showModalLogin = true" texto-btn-header="Ingresar" />
+    <header class="flex w-full">
+      <div class="w-4/12">
+        <h1
+          class="pl-4 text-4xl italic font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-700 to-purple-600 leading-tight"
+        >
+          MuchiTask
+        </h1>
+      </div>
+      <div class="w-full flex justify-end items-center space-x-4">
+        <BtnHeader @click="showModalRegistro = true" texto-btn-header="Registrar" />
+        <BtnHeader @click="showModalLogin = true" texto-btn-header="Ingresar" />
+      </div>
     </header>
     <Main />
   </div>
