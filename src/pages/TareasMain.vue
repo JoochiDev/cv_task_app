@@ -75,6 +75,17 @@ const selectedOption = ref({
   valor: '',
   texto: ''
 })
+const statusColors = {
+  pendiente: 'bg-yellow-200 text-yellow-800',
+  proceso: 'bg-blue-200 text-blue-800',
+  terminado: 'bg-green-200 text-green-800'
+}
+
+const statusLabels = {
+  pendiente: 'Pendiente',
+  proceso: 'En Proceso',
+  terminado: 'Terminado'
+}
 
 const opciones = ref([
   { id: 1, valor: 'pendiente', texto: 'Pendiente' },
@@ -82,6 +93,10 @@ const opciones = ref([
   { id: 3, valor: 'terminado', texto: 'Terminado' }
 ])
 
+const modalActualizarTareaCerrar = () => {
+  modalActualizarTarea.value = false
+  limpiarDatosNuevTarea()
+}
 const updateOpcion = (valor) => {
   selectedOption.value.texto = valor.texto
   selectedOption.value.valor = valor.valor
@@ -192,18 +207,6 @@ const cerrarModalConfrim = () => {
   modalConfirmarEliminacion.value = false
 }
 
-const statusColors = {
-  pendiente: 'bg-yellow-200 text-yellow-800',
-  proceso: 'bg-blue-200 text-blue-800',
-  terminado: 'bg-green-200 text-green-800'
-}
-
-const statusLabels = {
-  pendiente: 'Pendiente',
-  proceso: 'En Proceso',
-  terminado: 'Terminado'
-}
-
 const modalEliminar = ({ id }) => {
   idTareaEliminar.value = id
   modalConfirmarEliminacion.value = true
@@ -212,11 +215,11 @@ const modalEliminar = ({ id }) => {
 const btnCerrarSesion = () => {
   fetchCerrarSesion()
     .then((data) => {
-      console.log(data.message)
+      // console.log(data.message)
       router.push('/')
     })
     .catch((error) => {
-      console.log(error.message)
+      // console.log(error.message)
     })
 }
 
@@ -364,7 +367,7 @@ function leave(el, done) {
               </template>
               <template #slot-btn-actualizar>
                 <BtnTareaForm
-                  @click="modalActualizarTarea = false"
+                  @click="modalActualizarTareaCerrar"
                   text-btn-tarea="Cancelar"
                   class-btn-tarea="border border-gray-200 bg-white hover:bg-slate-100/40 text-black"
                 />
