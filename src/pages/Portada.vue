@@ -24,12 +24,21 @@ const msgError = ref({
   nombre: '',
   password: ''
 })
+
+function cerrarModalLogin() {
+  showModalLogin.value = false
+  limpiarDatosFormulario()
+  limpiarMsgError()
+  msgExito.value = ''
+}
+
 function cerrarModalRegistro() {
   showModalRegistro.value = false
   limpiarDatosFormulario()
-  limpiarMsgError
+  limpiarMsgError()
   msgExito.value = ''
 }
+
 function limpiarDatosFormulario() {
   datosFormulario.value = { nombre: '', password: '' }
 }
@@ -142,11 +151,15 @@ function leave(el, done) {
   <transition @before-enter="beforeEnter" @enter="enter" @leave="leave">
     <ModalLogin v-if="showModalLogin">
       <template #slot-username-login>
-        <Input v-model="datosFormulario.nombre" />
+        <Input v-model="datosFormulario.nombre" place-holder="Ingrese su usuario" />
         <span class="text-red-600/75 text-sm">{{ msgError.nombre }}</span>
       </template>
       <template #slot-password-login>
-        <Input v-model="datosFormulario.password" pass="password" />
+        <Input
+          v-model="datosFormulario.password"
+          pass="password"
+          place-holder="Ingrese su contraseña"
+        />
         <span class="text-red-600/75 text-sm">{{ msgError.password }}</span>
       </template>
       <template #slot-loading>
@@ -154,7 +167,7 @@ function leave(el, done) {
       </template>
       <template #slot-btn-form-login>
         <BtnForm
-          @click="showModalLogin = false"
+          @click="cerrarModalLogin"
           texto="Cancelar"
           class-vue="bg-slate-600 hover:bg-slate-500"
         />
@@ -171,11 +184,15 @@ function leave(el, done) {
   <transition @before-enter="beforeEnter" @enter="enter" @leave="leave">
     <ModalRegistro v-if="showModalRegistro">
       <template #slot-username>
-        <Input v-model="datosFormulario.nombre" />
+        <Input v-model="datosFormulario.nombre" place-holder="Ingrese su usuario" />
         <span class="text-red-600/75 text-sm">{{ msgError.nombre }}</span>
       </template>
       <template #slot-password>
-        <Input v-model="datosFormulario.password" pass="password" />
+        <Input
+          v-model="datosFormulario.password"
+          pass="password"
+          place-holder="Ingrese su contraseña"
+        />
         <span class="text-red-600/75 text-sm">{{ msgError.password }}</span>
         <span class="text-green-500/75 text-sm">{{ msgExito }}</span>
       </template>

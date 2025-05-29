@@ -323,7 +323,7 @@ function leave(el, done) {
           <transition @before-enter="beforeEnter" @enter="enter" @leave="leave">
             <ModalNuevaTarea v-if="modalNuevaTarea">
               <template #slot-input-tarea>
-                <Input v-model="nuevaTarea.titulo" />
+                <Input v-model="nuevaTarea.titulo" place-holder="Ingresa una descripción" />
                 <p class="mt-2 text-sm text-red-600">{{ msgError.titulo }}</p>
                 <TextArea v-model="nuevaTarea.descripcion" />
                 <p class="mt-2 text-sm text-red-600">{{ msgError.descripcion }}</p>

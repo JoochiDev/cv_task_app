@@ -6,6 +6,10 @@ defineProps({
   },
   pass: {
     type: String
+  },
+  placeHolder: {
+    type: String,
+    default: ''
   }
 })
 const emit = defineEmits(['update:modelValue'])
@@ -18,7 +22,7 @@ const updateTexto = (event) => {
     :value="modelValue"
     :type="pass"
     @input="updateTexto"
-    placeholder="Título de la tarea"
+    :placeholder="placeHolder"
     class="block h-10 w-full rounded-md border border-gray-800/15 px-3 py-2 text-sm placeholder:text-muted-foreground disabled:cursor-not-allowed"
   />
 </template>
